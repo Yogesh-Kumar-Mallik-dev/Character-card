@@ -1,0 +1,199 @@
+@font-face {
+    font-family: 'Lavishly Yours';
+    src: url('Fonts/LavishlyYours-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ---------- General Page ---------- */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #dbe0fc;
+    text-align: center;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    height: 100px;
+}
+  
+header p {
+    font-family: Lavishly Yours;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font-size: 60px;
+}
+  
+
+header p img {
+    width: 200px;
+    vertical-align: middle;
+}
+
+/* ---------- Flip Card Container ---------- */
+.flip-card {
+  width: 200px;
+  height: 360px;
+  perspective: 1000px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  margin: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.flip-card:hover {
+  transform: scale(1.05);
+}
+
+.flip-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg) scale(1.05);
+}
+
+
+/* ---------- Card Faces ---------- */
+.card {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+/* Front and Back specifics */
+.card-front {
+  z-index: 2;
+}
+
+.card-back {
+  /* background: #1e1e2f; */
+  transform: rotateY(180deg);
+}
+
+/* Vision backgrounds */
+.anemo { background-color: #68b6a4; }
+.pyro  { background-color: #d04f4f; }
+.hydro { background-color: #4fa5d0; }
+.cryo  { background-color: #6fb5d4; }
+.geo   { background-color: #d4b76f; }
+.electro { background-color: #a94fd0; }
+.dendro  { background-color: #4fd067; }
+
+.card img {
+  width: 176px;
+  height: 176px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.card h2 {
+  margin: 5px 0;
+}
+
+.vision-icon img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+.stars {
+  color: gold;
+  text-shadow: 0 0 6px gold, 0 0 12px orange;
+  animation: starShine 2s infinite alternate;
+}
+
+/* ---------- Aura Effects ---------- */
+.flip-card::before {
+  content: '';
+  position: absolute;
+  top: -12px; left: -12px; right: -12px; bottom: -12px;
+  border-radius: 16px;
+  filter: blur(8px);
+  z-index: -1;
+  opacity: 0;
+}
+
+.five-star::before {
+  background: radial-gradient(circle, rgba(255,215,0,0.6) 0%, rgba(255,215,0,0.1) 70%);
+  animation: fiveStarPulse 2.5s ease-in-out infinite;
+  opacity: 1;
+}
+
+.four-star::before {
+  background: radial-gradient(circle, rgba(138,43,226,0.5) 0%, rgba(138,43,226,0.1) 70%);
+  animation: fourStarPulse 2.5s ease-in-out infinite;
+  opacity: 1;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fiveStarPulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(255,215,0,0.6); }
+  50%      { box-shadow: 0 0 24px rgba(255,215,0,1); }
+}
+
+@keyframes fourStarPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(138,43,226,0.5); }
+  50%      { box-shadow: 0 0 20px rgba(138,43,226,1); }
+}
+
+@keyframes starShine {
+  0%   { text-shadow: 0 0 4px gold, 0 0 8px orange; }
+  100% { text-shadow: 0 0 8px gold, 0 0 16px orange; }
+}
+
+
+.footer {
+  background-color:  #dbe0fc;
+  color: #000000;
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: 50px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-top: 2px solid #333;
+}
+
+.footer a {
+  color: #57c1ff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer .social-icons {
+  margin-top: 10px;
+}
+
+.footer .social-icons a img {
+  width: 24px;
+  height: 24px;
+  margin: 0 8px;
+  vertical-align: middle;
+  transition: opacity 0.3s ease;
+}
+
+.footer .social-icons a img:hover {
+  opacity: 0.7;
+}
